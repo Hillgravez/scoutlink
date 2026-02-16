@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScoutConnect - Connect Scouts with Grassroots Talent</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50">
+  <!-- Navigation -->
+  <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <div class="flex items-center space-x-2">
+          <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+          <span class="text-xl font-bold text-gray-900">ScoutConnect</span>
+        </div>
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('discover')">Discover Talent</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('scouts')">Find Scouts</a>
+          <a href="#" class="text-gray-700 hover:text-blue-600 font-medium transition" onclick="showSection('about')">About</a>
+        </div>
+        <div class="flex items-center space-x-3">
+          <button class="px-4 py-2 text-gray-700 font-medium hover:text-blue-600 transition">Sign In</button>
+          <button class="px-5 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition shadow-sm">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="bg-gradient-to-br from-blue-50 to-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-5xl font-bold text-gray-900 mb-6">Connect Scouts with Grassroots Talent</h1>
+        <p class="text-xl text-gray-600 mb-8">Discover the next generation of athletes. ScoutConnect bridges the gap between professional scouts and emerging talent from local communities.</p>
+        <div class="flex justify-center space-x-4">
+          <button class="px-8 py-3 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-200" onclick="showSection('discover')">
+            Find Talent
+          </button>
+          <button class="px-8 py-3 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-50 transition border-2 border-blue-600" onclick="showSection('scouts')">
+            I'm a Scout
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="bg-white py-12 border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">2,450+</div>
+          <div class="text-gray-600 font-medium">Athletes</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">580+</div>
+          <div class="text-gray-600 font-medium">Scouts</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">15</div>
+          <div class="text-gray-600 font-medium">Sports</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold text-blue-600 mb-2">320+</div>
+          <div class="text-gray-600 font-medium">Connections Made</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Discover Talent Section -->
+  <section id="discover" class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900">Discover Talent</h2>
+        <div class="flex items-center space-x-4">
+          <select class="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500" onchange="filterTalent(this.value)">
+            <option value="all">All Sports</option>
+            <option value="football">Football</option>
+            <option value="basketball">Basketball</option>
+            <option value="athletics">Athletics</option>
+            <option value="cricket">Cricket</option>
+          </select>
+          <input type="text" placeholder="Search by name or location..." class="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500" oninput="searchTalent(this.value)">
+        </div>
+      </div>
+
+      <!-- Talent Grid -->
+      <div id="talentGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Talent cards will be generated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Scouts Section -->
+  <section id="scouts" class="py-16 bg-white hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-900">Professional Scouts</h2>
+        <select class="px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-700 font-medium focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="all">All Organizations</option>
+          <option value="club">Club Scouts</option>
+          <option value="national">National Teams</option>
+          <option value="agency">Agencies</option>
+        </select>
+      </div>
+
+      <!-- Scouts Grid -->
+      <div id="scoutsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Scout cards will be generated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-gray-50 hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">About ScoutConnect</h2>
+      <div class="bg-white rounded-2xl shadow-sm p-8 space-y-6">
+        <p class="text-gray-700 leading-relaxed">
+          ScoutConnect is a platform designed to bridge the gap between professional sports scouts and grassroots talent. We believe that exceptional athletes can emerge from anywhere, and our mission is to ensure they get the visibility they deserve.
+        </p>
+        <h3 class="text-xl font-bold text-gray-900">For Athletes</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Create a profile showcasing your skills, achievements, and performance statistics. Upload videos, track your progress, and get discovered by professional scouts from clubs, national teams, and sports agencies worldwide.
+        </p>
+        <h3 class="text-xl font-bold text-gray-900">For Scouts</h3>
+        <p class="text-gray-700 leading-relaxed">
+          Access a diverse pool of talented athletes from grassroots communities. Filter by sport, location, age group, and performance metrics. Connect directly with potential prospects and discover the next generation of sports stars.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <svg class="w-6 h-6 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+            </svg>
+            <span class="font-bold text-lg">ScoutConnect</span>
+          </div>
+          <p class="text-gray-400 text-sm">Connecting scouts with grassroots talent worldwide.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Platform</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white transition">For Athletes</a></li>
+            <li><a href="#" class="hover:text-white transition">For Scouts</a></li>
+            <li><a href="#" class="hover:text-white transition">How It Works</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Company</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white transition">About Us</a></li>
+            <li><a href="#" class="hover:text-white transition">Contact</a></li>
+            <li><a href="#" class="hover:text-white transition">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Legal</h4>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400 text-sm">
+        © 2026 ScoutConnect. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
